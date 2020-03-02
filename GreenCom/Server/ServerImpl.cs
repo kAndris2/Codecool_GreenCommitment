@@ -12,7 +12,22 @@ namespace Server
 
         static void Main(string[] args)
         {
-            IPAddress ipAddress = IPAddress.Parse("192.168.150.9");
+
+
+            string GetLocalIPAddress()
+            {
+                var host = Dns.GetHostEntry(Dns.GetHostName());
+                foreach (var ip in host.AddressList)
+                {
+                    if (ip.AddressFamily == AddressFamily.InterNetwork)
+                    {
+                        return ip.ToString();
+                    }
+                }
+                throw new Exception("No network adapters with an IPv4 address in the system!");
+            }
+
+            IPAddress ipAddress = IPAddress.Parse(GetLocalIPAddress());
             IPEndPoint localEndPoint = new IPEndPoint(ipAddress, 12345);
 
             Socket listener = new Socket(ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
