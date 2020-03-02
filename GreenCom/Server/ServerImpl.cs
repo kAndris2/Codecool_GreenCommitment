@@ -10,7 +10,7 @@ namespace Server
     {
         private static ManualResetEvent allDone = new ManualResetEvent(false);
 
-        static void Main(string[] args)
+        public void StartServer(string[] args)
         {
 
 
