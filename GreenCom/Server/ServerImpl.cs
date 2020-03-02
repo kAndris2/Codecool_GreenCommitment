@@ -12,7 +12,7 @@ namespace Server
 
         static void Main(string[] args)
         {
-            IPAddress ipAddress = IPAddress.Parse("192.168.150.1");
+            IPAddress ipAddress = IPAddress.Parse("192.168.150.9");
             IPEndPoint localEndPoint = new IPEndPoint(ipAddress, 12345);
 
             Socket listener = new Socket(ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
