@@ -28,6 +28,7 @@ namespace Client
 
             byte[] msg = Encoding.ASCII.GetBytes(measure.ToString());
             Ns.Write(msg);
+            Console.WriteLine("asd lol xd");
         }
 
         public void CloseClient()

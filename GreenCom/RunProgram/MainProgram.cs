@@ -21,8 +21,7 @@ namespace RunProgram
                 }
                 catch (Exception)
                 {
-
-                    throw new InvalidOperationException("Wrong option, please try again.");
+                    Console.WriteLine("Wrong option, please try again.");
                 }
             }
         }

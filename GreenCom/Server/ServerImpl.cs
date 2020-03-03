@@ -36,6 +36,7 @@ namespace Server
             while (true)
             {
                 allDone.Reset();
+                
 
                 Console.WriteLine("Waiting for a connection...");
                 listener.BeginAccept(new AsyncCallback(AcceptCallback), listener);
@@ -65,7 +66,6 @@ namespace Server
             else
             {
                 Console.WriteLine("KEX");
-
             }
             client.Close();
         }
