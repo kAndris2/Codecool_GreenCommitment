@@ -11,8 +11,20 @@ namespace RunProgram
     {
         public static void Main(string[] args)
         {
-            ClientImpl client = new ClientImpl("192.168.150.1", 12345);
-            client.SendMeasurement("xxx");
+            Ui ui = new Ui();
+            while (true)
+            {
+                ui.HandleMenu();
+                try
+                {
+                    ui.Choose();
+                }
+                catch (Exception)
+                {
+
+                    throw new InvalidOperationException("Wrong option, please try again.");
+                }
+            }
         }
     }
 }
