@@ -14,7 +14,6 @@ namespace Client
 
         public ClientImpl(string ip, int port)
         {
-            //Client = new TcpClient(GetLocalIPAddress(), 12345);
             Client = new TcpClient(ip, port);
             Ns = Client.GetStream();
             Random = new Random();
@@ -34,19 +33,6 @@ namespace Client
         public void CloseClient()
         {
             Client.Close();
-        }
-
-        private string GetLocalIPAddress()
-        {
-            var host = Dns.GetHostEntry(Dns.GetHostName());
-            foreach (var ip in host.AddressList)
-            {
-                if (ip.AddressFamily == AddressFamily.InterNetwork)
-                {
-                    return ip.ToString();
-                }
-            }
-            throw new Exception("No network adapters with an IPv4 address in the system!");
         }
     }
 }
