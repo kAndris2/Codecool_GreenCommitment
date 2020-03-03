@@ -37,7 +37,7 @@ namespace Common
             {
                     "Start Server",
                     "Stop Server",
-                    "Add a Client",
+                    "Client",
                     "Show Graph",
                     "Show IP and Port for Server"
             };
@@ -68,20 +68,16 @@ namespace Common
 
             if (option == "1")
             {
-                Console.WriteLine("Explicit:");
-                int x = 0;
-                float y = 3.8f;
-
-                x += (int)y;
-                Console.WriteLine(x);
-
-                Console.WriteLine("Implicit:");
-                int z = 0;
-                float u = 3.8f;
-
-                //z += u;
-                Console.WriteLine(z);
-                
+                ServerImpl server = new ServerImpl();
+                Console.Clear();
+                Console.WriteLine("Starting the server, please wait...");
+                Thread.Sleep(1300);
+                server.Start();
+                Console.Clear();
+                Console.WriteLine("Server is running!");
+                Console.WriteLine($"{Environment.NewLine}Press enter to continue...");
+                Console.ReadKey();
+                Console.Clear();
             }
             else if (option == "2")
             {
@@ -90,7 +86,11 @@ namespace Common
             else if (option == "3")
             {
                 Console.Clear();
-                ClientImpl client = new ClientImpl(GetLocalIPAddress().ToString(),12345);
+                Console.WriteLine("Please enter the IP address: ");
+                string IP = Console.ReadLine();
+                Console.WriteLine("\nPlease enter the Port: ");
+                int port = Convert.ToInt32(Console.ReadLine());
+                ClientImpl client = new ClientImpl(IP,port);
                 while (true)
                 {
                     Console.WriteLine("Do you want to add a new value? [yes/no]:");
