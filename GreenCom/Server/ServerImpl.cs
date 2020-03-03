@@ -6,14 +6,12 @@ using System.Threading;
 
 namespace Server
 {
-    class ServerImpl
+    public class ServerImpl
     {
         private static ManualResetEvent allDone = new ManualResetEvent(false);
 
-        public void StartServer(string[] args)
+        public static void Main(string[] args)
         {
-
-
             string GetLocalIPAddress()
             {
                 var host = Dns.GetHostEntry(Dns.GetHostName());
@@ -62,7 +60,7 @@ namespace Server
 
             if (bytesReads < buff.Length)
             {
-                Console.WriteLine("PITE: {0} {1}", bytesReads, Encoding.ASCII.GetString(buff, 0, bytesReads));
+                Console.WriteLine("{0}", Encoding.ASCII.GetString(buff, 0, bytesReads));
             }
             else
             {
@@ -70,7 +68,6 @@ namespace Server
 
             }
             client.Close();
-
         }
     }
 }
