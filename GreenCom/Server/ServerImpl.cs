@@ -10,7 +10,7 @@ namespace Server
     {
         private static ManualResetEvent allDone = new ManualResetEvent(false);
 
-        public static void Main(string[] args)
+        public void Start()
         {
             string GetLocalIPAddress()
             {
@@ -45,26 +45,29 @@ namespace Server
             }
         }
 
+        public void Close()
+        {
+            allDone.Close();
+        }
+
         private static void AcceptCallback(IAsyncResult ar)
         {
             allDone.Set();
-            
 
             // Get the socket that handles the client request.  
             Socket listener = (Socket)ar.AsyncState;
             Socket client = listener.EndAccept(ar);
 
-            //WHILE loop
-
-            byte[] buff = new byte[1024];
-            int bytesReads = client.Receive(buff);
-
-            if (bytesReads < buff.Length)
+            while (true)
             {
-                Console.WriteLine("{0}", Encoding.ASCII.GetString(buff, 0, bytesReads));
-            }
+                byte[] buff = new byte[1024];
+                int bytesReads = client.Receive(buff);
 
-            client.Close();
+                if (bytesReads < buff.Length)
+                {
+                    Console.WriteLine("{0}", Encoding.ASCII.GetString(buff, 0, bytesReads));
+                }
+            }
         }
     }
 }
