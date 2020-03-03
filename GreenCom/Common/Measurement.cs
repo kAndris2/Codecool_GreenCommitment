@@ -19,10 +19,13 @@ namespace Common
 
         public override string ToString()
         {
+            double ticks = double.Parse($"{Time}");
+            TimeSpan time = TimeSpan.FromMilliseconds(ticks);
+            DateTime startdate = new DateTime(1970, 1, 1) + time;
             return $"ID: {Id}\n" +
                    $"Value: {Value}\n" +
                    $"Type: {Type}\n" +
-                   $"Time: {Time}";
+                   $"Time: {startdate}";
         }
     }
 }
