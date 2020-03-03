@@ -62,11 +62,6 @@ namespace Server
             {
                 Console.WriteLine("{0}", Encoding.ASCII.GetString(buff, 0, bytesReads));
             }
-            else
-            {
-                Console.WriteLine("KEX");
-
-            }
             client.Close();
         }
     }
