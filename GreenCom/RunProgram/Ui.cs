@@ -91,7 +91,7 @@ namespace Common
                 string IP = Console.ReadLine();
                 Console.WriteLine("\nPlease enter the Port: ");
                 int port = Convert.ToInt32(Console.ReadLine());
-                ClientImpl client = new ClientImpl(IP,port);
+                ClientImpl client = new ClientImpl(IP, port);
                 while (true)
                 {
                     Console.WriteLine("Do you want to add a new value? [yes/no]:");
@@ -135,9 +135,7 @@ namespace Common
                 Console.Clear();
             }
             else if (option == "0")
-            {
-                DataHandler dataHandler = new DataHandler();
-                
+            {                
                 Console.Clear();
                 TimeSpan ts = new TimeSpan(0, 0, 2);
                 Console.WriteLine("Shutting down...");

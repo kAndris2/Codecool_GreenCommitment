@@ -10,7 +10,7 @@ namespace Server
     public static class DataHandler
     {
 
-        public static List<string> Datas = new List<string>();
+        
         public static void Serialize(List<Measurement> measurments)
         {
             using (Stream fs = new FileStream("Measurments.xml", FileMode.Create, FileAccess.Write, FileShare.None))

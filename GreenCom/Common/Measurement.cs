@@ -9,12 +9,12 @@ namespace Common
         public String Type { get; set; }
         public long Time { get; set; }
 
-        public Measurement(int id, int value, string type, long time)
+        public Measurement(string [] stringarr)
         {
-            Id = id;
-            Value = value;
-            Type = type;
-            Time = time;
+            Id = int.Parse(stringarr[0]);
+            Value = int.Parse(stringarr[1]);
+            Type = stringarr[2];
+            Time = int.Parse(stringarr[3]);
         }
 
         public override string ToString()

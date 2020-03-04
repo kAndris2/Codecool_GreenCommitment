@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Common;
+using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
@@ -10,7 +11,8 @@ namespace Server
     public class ServerImpl
     {
         private static ManualResetEvent allDone = new ManualResetEvent(false);
-       
+
+        public static List<Measurement> Datas = new List<Measurement>();
 
         public void Start()
         {
@@ -44,6 +46,7 @@ namespace Server
                 listener.BeginAccept(new AsyncCallback(AcceptCallback), listener);
 
                 allDone.WaitOne();
+
             }
         }
 
@@ -70,8 +73,36 @@ namespace Server
                 else if (bytesReads < buff.Length)
                 {
                     Console.WriteLine("{0}", Encoding.ASCII.GetString(buff, 0, bytesReads));
+                    Datas.Add(ConvertToObject(Encoding.ASCII.GetString(buff, 0, bytesReads)));
                 }
             }
+        }
+
+        private static  Measurement ConvertToObject(string stringdata)
+        {
+
+            int iD = 0;
+            string [] split = stringdata.Split("\n");
+            string temp = "";
+
+            foreach (string item in split)
+            {
+                
+                foreach (char character in item)
+                {
+                    if (character.Equals(" "))
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        temp += character;
+                    }
+                }
+                temp += ",";
+            }
+
+            return new Measurement(temp.Split(","));
         }
     }
 }
