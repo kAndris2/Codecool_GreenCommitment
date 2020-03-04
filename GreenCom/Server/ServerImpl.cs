@@ -45,6 +45,7 @@ namespace Server
                 Console.WriteLine("Waiting for a connection...");
                 listener.BeginAccept(new AsyncCallback(AcceptCallback), listener);
 
+
                 allDone.WaitOne();
 
             }
@@ -74,6 +75,7 @@ namespace Server
                 {
                     Console.WriteLine("{0}", Encoding.ASCII.GetString(buff, 0, bytesReads));
                     Datas.Add(ConvertToObject(Encoding.ASCII.GetString(buff, 0, bytesReads)));
+
                 }
             }
         }
