@@ -12,7 +12,7 @@ namespace Common
         public Measurement(string [] stringarr)
         {
             Id = int.Parse(stringarr[0]);
-            Value = int.Parse(stringarr[1]);
+            Value = int.Parse(stringarr[1]); 
             Type = stringarr[2];
             Time = int.Parse(stringarr[3]);
         }
