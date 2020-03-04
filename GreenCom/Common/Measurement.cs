@@ -17,13 +17,17 @@ namespace Common
             Time = time;
         }
 
-        public Measurement(string [] stringarr)
+        public Measurement(string[] str)
         {
-            Id = int.Parse(stringarr[0]);
-            Value = int.Parse(stringarr[1]); 
-            Type = stringarr[2];
-            Time = int.Parse(stringarr[3]);
+            Id = Convert.ToInt32(str[0]);
+            Value = Convert.ToInt32(str[1]);
+            Type = str[2];
+            //Time = Convert.ToInt64(str[3]);
+            
         }
+
+        public Measurement()
+        { }
 
         public override string ToString()
         {

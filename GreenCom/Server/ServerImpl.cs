@@ -82,22 +82,24 @@ namespace Server
         {
             string [] split = stringdata.Split("\n");
             string temp = "";
+            bool check = false;
 
             foreach (string item in split)
             {
-                
                 foreach (char character in item)
                 {
-                    if (character.Equals(" "))
+                    if (character.Equals(' '))
                     {
+                        check = true;
                         continue;
                     }
-                    else
+                    if (check)
                     {
                         temp += character;
                     }
                 }
                 temp += ",";
+                check = false;
             }
 
             return new Measurement(temp.Split(","));
