@@ -56,8 +56,7 @@ namespace Server
         private static void AcceptCallback(IAsyncResult ar)
         {
             allDone.Set();
-
-            // Get the socket that handles the client request.  
+  
             Socket listener = (Socket)ar.AsyncState;
             Socket client = listener.EndAccept(ar);
 
