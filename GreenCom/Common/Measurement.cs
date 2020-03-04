@@ -9,6 +9,14 @@ namespace Common
         public String Type { get; set; }
         public long Time { get; set; }
 
+        public Measurement(int id, int value, string type, long time)
+        {
+            Id = id;
+            Value = value;
+            Type = type;
+            Time = time;
+        }
+
         public Measurement(string [] stringarr)
         {
             Id = int.Parse(stringarr[0]);

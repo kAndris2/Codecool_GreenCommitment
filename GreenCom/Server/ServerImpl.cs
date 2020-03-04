@@ -40,14 +40,11 @@ namespace Server
             while (true)
             {
                 allDone.Reset();
-                
 
                 Console.WriteLine("Waiting for a connection...");
                 listener.BeginAccept(new AsyncCallback(AcceptCallback), listener);
 
-
                 allDone.WaitOne();
-
             }
         }
 
@@ -82,8 +79,6 @@ namespace Server
 
         private static  Measurement ConvertToObject(string stringdata)
         {
-
-            int iD = 0;
             string [] split = stringdata.Split("\n");
             string temp = "";
 
