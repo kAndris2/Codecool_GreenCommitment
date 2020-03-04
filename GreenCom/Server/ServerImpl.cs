@@ -72,6 +72,7 @@ namespace Server
                 {
                     Console.WriteLine("{0}", Encoding.ASCII.GetString(buff, 0, bytesReads));
                     Datas.Add(ConvertToObject(Encoding.ASCII.GetString(buff, 0, bytesReads)));
+                    DataHandler.Serialize(Datas);
 
                 }
             }
