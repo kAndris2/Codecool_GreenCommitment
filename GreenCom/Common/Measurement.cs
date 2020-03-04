@@ -23,7 +23,6 @@ namespace Common
             Value = Convert.ToInt32(str[1]);
             Type = str[2];
             string iString = str[3];
-            DateTime oDate = DateTime.ParseExact(iString, "dd/MM/yyyyHH:mm:sstt", null);
             Time = Convert.ToInt64(str[3]);
         }
 
