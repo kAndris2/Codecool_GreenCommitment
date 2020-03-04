@@ -7,11 +7,11 @@ using Common;
 
 namespace Server
 {
-    public class DataHandler
+    public static class DataHandler
     {
 
         public static List<string> Datas = new List<string>();
-        public void Serialize(List<Measurement> measurments)
+        public static void Serialize(List<Measurement> measurments)
         {
             using (Stream fs = new FileStream("Measurments.xml", FileMode.Create, FileAccess.Write, FileShare.None))
             {
@@ -20,7 +20,7 @@ namespace Server
             }
         }
 
-        public List<Measurement> DeSerialize()
+        public static List<Measurement> DeSerialize()
         {
             List<Measurement> measurements = new List<Measurement>();
             XmlSerializer serializer = new XmlSerializer(typeof(List<Measurement>));

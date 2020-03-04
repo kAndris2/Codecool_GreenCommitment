@@ -63,12 +63,13 @@ namespace Common
                 throw new Exception("No network adapters with an IPv4 address in the system!");
             }
 
+            ServerImpl server = null;
             Console.WriteLine("\nPlease enter a number: ");
             string option = Console.ReadLine();
 
             if (option == "1")
             {
-                ServerImpl server = new ServerImpl();
+                server = new ServerImpl();
                 Console.Clear();
                 Console.WriteLine("Starting the server, please wait...");
                 Thread.Sleep(1300);
@@ -81,7 +82,7 @@ namespace Common
             }
             else if (option == "2")
             {
-                Console.WriteLine(DataHandler.Datas.Count);
+                server.Close();
             }
             else if (option == "3")
             {
