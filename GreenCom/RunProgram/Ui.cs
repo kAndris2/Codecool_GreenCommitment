@@ -81,7 +81,7 @@ namespace Common
             }
             else if (option == "2")
             {
-
+                Console.WriteLine(DataHandler.Datas.Count);
             }
             else if (option == "3")
             {
@@ -135,6 +135,8 @@ namespace Common
             }
             else if (option == "0")
             {
+                DataHandler dataHandler = new DataHandler();
+                
                 Console.Clear();
                 TimeSpan ts = new TimeSpan(0, 0, 2);
                 Console.WriteLine("Shutting down...");

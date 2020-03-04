@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -9,6 +10,7 @@ namespace Server
     public class ServerImpl
     {
         private static ManualResetEvent allDone = new ManualResetEvent(false);
+       
 
         public void Start()
         {
@@ -68,6 +70,9 @@ namespace Server
                 else if (bytesReads < buff.Length)
                 {
                     Console.WriteLine("{0}", Encoding.ASCII.GetString(buff, 0, bytesReads));
+                    Console.WriteLine("adding to list");
+                    DataHandler.Datas.Add(Encoding.ASCII.GetString(buff, 0, bytesReads));
+                    Console.WriteLine("added to list");
                 }
             }
         }

@@ -7,8 +7,10 @@ using Common;
 
 namespace Server
 {
-    class DataHandler
+    public class DataHandler
     {
+
+        public static List<string> Datas = new List<string>();
         public void Serialize(List<Measurement> measurments)
         {
             using (Stream fs = new FileStream("Measurments.xml", FileMode.Create, FileAccess.Write, FileShare.None))
