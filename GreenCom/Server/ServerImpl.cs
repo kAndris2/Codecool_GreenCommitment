@@ -63,7 +63,9 @@ namespace Server
                 byte[] buff = new byte[1024];
                 int bytesReads = client.Receive(buff);
 
-                if (bytesReads < buff.Length)
+                if (bytesReads == 0)
+                    break;
+                else if (bytesReads < buff.Length)
                 {
                     Console.WriteLine("{0}", Encoding.ASCII.GetString(buff, 0, bytesReads));
                 }
