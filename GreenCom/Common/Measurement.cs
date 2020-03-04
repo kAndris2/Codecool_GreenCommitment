@@ -23,7 +23,7 @@ namespace Common
             Value = Convert.ToInt32(str[1]);
             Type = str[2];
             //Time = Convert.ToInt64(str[3]);
-            
+            Time = new DateTimeOffset(str[3]).ToUnixTimeMilliseconds();
         }
 
         public Measurement()
