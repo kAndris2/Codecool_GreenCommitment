@@ -7,12 +7,12 @@ using Client;
 using System.Threading;
 using System.Net;
 using System.Net.Sockets;
+using System.Diagnostics;
 
 namespace Common
 {
     class Ui
     {
-
         public void PrintMenu(string title, string[] list, string exitmessage)
         {
             Console.WriteLine(title + $":{Environment.NewLine}");
@@ -36,9 +36,8 @@ namespace Common
             string[] options = new string[]
             {
                     "Start Server",
-                    "Stop Server",
-                    "Client",
                     "Show Graph",
+                    "Client",
                     "Show IP and Port for Server"
             };
 
@@ -82,7 +81,24 @@ namespace Common
             }
             else if (option == "2")
             {
-               
+                Process myProcess = new Process();
+
+                try
+                {
+                    myProcess.StartInfo.UseShellExecute = false;
+                    // You can start any process, HelloWorld is a do-nothing example.
+                    myProcess.StartInfo.FileName = "C:\\HelloWorld.exe";
+                    myProcess.StartInfo.CreateNoWindow = true;
+                    myProcess.Start();
+                    // This code assumes the process you are starting will terminate itself.
+                    // Given that is is started without a window so you cannot terminate it
+                    // on the desktop, it must terminate itself or you can do it programmatically
+                    // from this application using the Kill method.
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
             }
             else if (option == "3")
             {
@@ -123,10 +139,6 @@ namespace Common
                 }
             }
             else if (option == "4")
-            {
-
-            }
-            else if (option == "5")
             {
                 Console.Clear();
                 Console.WriteLine($"IP: {GetLocalIPAddress()}{Environment.NewLine}Port: 12345");
