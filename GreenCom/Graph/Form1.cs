@@ -32,5 +32,14 @@ namespace Graph
                 }
             };
         }
+
+        private Dictionary<int, string> GetValues()
+        {
+            var values = new Dictionary<int, string>();
+            string path = @"C:\Users\andri\Desktop\Codecool\C#\Benti\Green_Commitment\GreenCommitment\GreenCom\RunProgram\bin\Debug\netcoreapp3.1\Measurement.csv";
+
+
+            return values;
+        }
     }
 }
