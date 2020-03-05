@@ -87,8 +87,8 @@ namespace Common
                 {
                     myProcess.StartInfo.UseShellExecute = false;
                     // You can start any process, HelloWorld is a do-nothing example.
-                    myProcess.StartInfo.FileName = "C:\\HelloWorld.exe";
-                    myProcess.StartInfo.CreateNoWindow = true;
+                    myProcess.StartInfo.FileName = @"C:\Users\andri\Desktop\Codecool\C#\Benti\Green_Commitment\GreenCommitment\GreenCom\Graph\bin\Debug\Graph.exe";
+                    myProcess.StartInfo.CreateNoWindow = false;
                     myProcess.Start();
                     // This code assumes the process you are starting will terminate itself.
                     // Given that is is started without a window so you cannot terminate it
@@ -99,6 +99,7 @@ namespace Common
                 {
                     Console.WriteLine(e.Message);
                 }
+                Console.Clear();
             }
             else if (option == "3")
             {
