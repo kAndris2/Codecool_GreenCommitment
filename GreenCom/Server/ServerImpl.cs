@@ -76,6 +76,7 @@ namespace Server
                 else if (bytesReads < buff.Length)
                 {
                     string message = Encoding.ASCII.GetString(buff, 0, bytesReads);
+                   
                     Console.WriteLine(message);
                     Datas.Add(ConvertToObject(message));
                     DataHandler.Serialize(Datas);

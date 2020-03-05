@@ -6,7 +6,7 @@ namespace Common
     {
         public int Id { get; set; }
         public int Value { get; set; }
-        public String Type { get; set; }
+        public string Type { get; set; }
         public long Time { get; set; }
 
         public Measurement(int id, int value, string type, long time)

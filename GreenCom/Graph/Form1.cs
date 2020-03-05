@@ -24,11 +24,24 @@ namespace Graph
             {
                 new LineSeries
                 {
-                    Title = "Celsius:",
+                    Title = "This line represents Celsius degree values.",
+                    Values = GetOPoints(GetValues()),
+                    PointGeometrySize = 15
+                },
+                new LineSeries
+                {
+                    Title = "This line represents Water level values.",
+                    Values = GetOPoints(GetValues()),
+                    PointGeometrySize = 15
+                },
+                 new LineSeries
+                {
+                    Title = "This line represents Air pressure level values.",
                     Values = GetOPoints(GetValues()),
                     PointGeometrySize = 15
                 }
             };
+            cartesianChart1.LegendLocation = LegendLocation.Right;
         }
 
         private Dictionary<string, string> GetValues()
