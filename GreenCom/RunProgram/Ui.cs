@@ -86,8 +86,8 @@ namespace Common
                 try
                 {
                     myProcess.StartInfo.UseShellExecute = false;
-                    // You can start any process, HelloWorld is a do-nothing example.
-                    myProcess.StartInfo.FileName = @"C:\Users\andri\Desktop\Codecool\C#\Benti\Green_Commitment\GreenCommitment\GreenCom\Graph\bin\Debug\Graph.exe";
+                    var path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                    myProcess.StartInfo.FileName = path + "/Graph.exe";
                     myProcess.StartInfo.CreateNoWindow = false;
                     myProcess.Start();
                     // This code assumes the process you are starting will terminate itself.
