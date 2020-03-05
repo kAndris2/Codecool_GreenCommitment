@@ -32,6 +32,15 @@ namespace Server
             return measurements;
         }
 
-    }   
 
+        public static void SaveToCSV(List<Measurement> list)
+        {
+            foreach (var item in list)
+            {
+                char dot = ';';
+                string temp = item.Id + dot + item.Value + dot + item.Type + dot + item.Time;
+                File.AppendAllText("Measurement.csv", temp);
+            }
+        }
+    }   
 }
