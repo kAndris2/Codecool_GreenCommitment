@@ -35,6 +35,7 @@ namespace Server
 
         public static void SaveToCSV(List<Measurement> list)
         {
+     
             foreach (var item in list)
             {
                 string temp = $"{item.Id};{item.Value};{item.Type};{item.Time}";

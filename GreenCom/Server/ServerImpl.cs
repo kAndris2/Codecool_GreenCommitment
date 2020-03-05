@@ -36,13 +36,15 @@ namespace Server
 
             listener.Bind(localEndPoint);
             listener.Listen(100);
+            Console.WriteLine("Waiting for a connection...");
 
             while (true)
             {
                 allDone.Reset();
 
-                Console.WriteLine("Waiting for a connection...");
+             
                 listener.BeginAccept(new AsyncCallback(AcceptCallback), listener);
+                Console.WriteLine("\nClient has connected!\n");
 
                 allDone.WaitOne();
             }

@@ -82,7 +82,7 @@ namespace Common
             }
             else if (option == "2")
             {
-                server.Close();
+               
             }
             else if (option == "3")
             {
