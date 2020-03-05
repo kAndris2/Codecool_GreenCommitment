@@ -33,13 +33,10 @@ namespace Server
         }
 
 
-        public static void SaveToCSV(List<Measurement> list)
+        public static void SaveToCSV(Measurement m)
         {
-            foreach (var item in list)
-            {
-                string temp = $"{item.Id};{item.Value};{item.Type};{item.Time}";
-                File.AppendAllText("Measurement.csv", temp + "\n");
-            }
+            string temp = $"{m.Id};{m.Value};{m.Type};{m.Time}\n";
+            File.AppendAllText("Measurement.csv", temp);
         }
     }   
 }
