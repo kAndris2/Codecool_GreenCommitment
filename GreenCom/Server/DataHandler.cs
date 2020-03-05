@@ -13,7 +13,8 @@ namespace Server
         
         public static void Serialize(List<Measurement> measurments)
         {
-            using (Stream fs = new FileStream("Measurments.xml", FileMode.Create, FileAccess.Write, FileShare.None))
+            var path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            using (Stream fs = new FileStream(path + @"/Graph/Measurement.xml", FileMode.Create, FileAccess.Write, FileShare.None))
             {
                 XmlSerializer serializer = new XmlSerializer(typeof(List<Measurement>));
                 serializer.Serialize(fs, measurments);
@@ -22,9 +23,10 @@ namespace Server
 
         public static List<Measurement> DeSerialize()
         {
+            var path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             List<Measurement> measurements = new List<Measurement>();
             XmlSerializer serializer = new XmlSerializer(typeof(List<Measurement>));
-            using (FileStream fs = File.OpenRead("Measurments.xml"))
+            using (FileStream fs = File.OpenRead(path + @"/Graph/Measurement.xml"))
             {
 
                 measurements = (List<Measurement>)serializer.Deserialize(fs);
@@ -37,7 +39,9 @@ namespace Server
         {
 
             string temp = $"{m.Id};{m.Value};{m.Type};{m.Time}\n";
-            File.AppendAllText("Measurement.csv", temp);
+            var path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            
+            File.AppendAllText(path + @"/Graph/Measurement.csv", temp);
 
         }
     }   
