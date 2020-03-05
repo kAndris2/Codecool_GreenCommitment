@@ -29,7 +29,7 @@ namespace Server
                 throw new Exception("No network adapters with an IPv4 address in the system!");
             }
 
-            IPAddress ipAddress = IPAddress.Parse(GetLocalIPAddress());
+            IPAddress ipAddress = IPAddress.Parse("192.168.0.148");
             IPEndPoint localEndPoint = new IPEndPoint(ipAddress, 12345);
 
             Socket listener = new Socket(ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
@@ -79,7 +79,7 @@ namespace Server
                    
                     Console.WriteLine(message);
                     Datas.Add(ConvertToObject(message));
-                    DataHandler.Serialize(Datas);
+                    //DataHandler.Serialize(Datas);
                     DataHandler.SaveToCSV(ConvertToObject(message));
 
                 }

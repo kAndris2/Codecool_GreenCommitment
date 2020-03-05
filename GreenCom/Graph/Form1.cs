@@ -25,26 +25,26 @@ namespace Graph
                 new LineSeries
                 {
                     Title = "This line represents Celsius degree values.",
-                    Values = GetOPoints(GetValues()),
+                    Values = GetOPoints(GetCelsiusValues()),
                     PointGeometrySize = 15
                 },
                 new LineSeries
                 {
                     Title = "This line represents Water level values.",
-                    Values = GetOPoints(GetValues()),
+                    Values = GetOPoints(GetWaterLevelValues()),
                     PointGeometrySize = 15
                 },
                  new LineSeries
                 {
                     Title = "This line represents Air pressure level values.",
-                    Values = GetOPoints(GetValues()),
+                    Values = GetOPoints(GetAirPressureValues()),
                     PointGeometrySize = 15
                 }
             };
             cartesianChart1.LegendLocation = LegendLocation.Right;
         }
 
-        private Dictionary<string, string> GetValues()
+        private Dictionary<string, string> GetCelsiusValues()
         {
             var values = new Dictionary<string, string>();
             var path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
@@ -53,28 +53,96 @@ namespace Graph
             foreach (string item in data)
             {
                 string[] temp = item.Split(';');
-                for (int i = 0; i < temp.Length; i++)
+                if (temp.Contains("celsiusdegree"))
                 {
-                    if (!values.ContainsKey(temp[1]))
+                    for (int i = 0; i < temp.Length; i++)
                     {
-                        values.Add(temp[1],temp[3]);
+                        if (!values.ContainsKey(temp[1]))
+                        {
+                            values.Add(temp[1], temp[3]);
+                        }
                     }
+
                 }
             }
             return values;
         }
-        
+        private Dictionary<string, string> GetWaterLevelValues()
+        {
+            var values = new Dictionary<string, string>();
+            var path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string[] data = File.ReadAllLines(path + "/Graph/Measurement.csv");
+
+            foreach (string item in data)
+            {
+                string[] temp = item.Split(';');
+                if (temp.Contains("waterlevel"))
+                {
+                    for (int i = 0; i < temp.Length; i++)
+                    {
+                        if (!values.ContainsKey(temp[1]))
+                        {
+                            values.Add(temp[1], temp[3]);
+                        }
+                    }
+
+                }
+            }
+            return values;
+        }
+
+        private Dictionary<string, string> GetAirPressureValues()
+        {
+            var values = new Dictionary<string, string>();
+            var path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string[] data = File.ReadAllLines(path + "/Graph/Measurement.csv");
+
+            foreach (string item in data)
+            {
+               
+                
+                    string[] temp = item.Split(';');
+                if (temp.Contains("airpressure"))
+                {
+                    for (int i = 0; i < temp.Length; i++)
+                    {
+                        if (!values.ContainsKey(temp[1]))
+                        {
+                            values.Add(temp[1], temp[3]);
+                        }
+                    }
+
+                }
+                   
+                
+            }
+            return values;
+        }
+
+
         private ChartValues<ObservablePoint> GetOPoints(Dictionary<string, string> table)
         {
             ChartValues<ObservablePoint> data = new ChartValues<ObservablePoint>();
 
             foreach (KeyValuePair<string, string> item in table)
             {
+
+
                 long temp_key = int.Parse(item.Key),
                     temp_value = Convert.ToInt64(item.Value);
+
+
+                TimeSpan time = TimeSpan.FromMilliseconds(temp_key);
+                DateTime startdate = new DateTime(1970, 1, 1) + time;
+
                 data.Add(new ObservablePoint(temp_value, temp_key));
             }
             return data;
+        }
+
+        private void cartesianChart1_ChildChanged(object sender, System.Windows.Forms.Integration.ChildChangedEventArgs e)
+        {
+
         }
     }
 }
