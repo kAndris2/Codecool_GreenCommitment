@@ -24,6 +24,7 @@ namespace Graph
             {
                 new LineSeries
                 {
+                    Title = "Celsius:",
                     Values = GetOPoints(GetValues()),
                     PointGeometrySize = 15
                 }
