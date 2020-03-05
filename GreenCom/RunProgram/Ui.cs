@@ -85,9 +85,9 @@ namespace Common
 
                 try
                 {
-                    myProcess.StartInfo.UseShellExecute = false;
+                    myProcess.StartInfo.UseShellExecute = true;
                     var path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                    myProcess.StartInfo.FileName = path + "/Graph/Graph.exe";
+                    myProcess.StartInfo.FileName = path + "/Graph/Graph.lnk";
                     myProcess.StartInfo.CreateNoWindow = false;
                     myProcess.Start();
                     // This code assumes the process you are starting will terminate itself.

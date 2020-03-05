@@ -45,7 +45,7 @@ namespace Client
         public void SendMeasurement(string name)
         {
             Measurement measure = new Measurement(Random.Next(1000, 9999),
-                                                  Random.Next(-200, 200),
+                                                  Random.Next(0, 100),
                                                   name,
                                                   DateTimeOffset.Now.ToUnixTimeMilliseconds());
 
