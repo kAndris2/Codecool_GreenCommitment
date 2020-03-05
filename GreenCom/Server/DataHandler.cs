@@ -37,9 +37,8 @@ namespace Server
         {
             foreach (var item in list)
             {
-                char dot = ';';
-                string temp = item.Id + dot + item.Value + dot + item.Type + dot + item.Time;
-                File.AppendAllText("Measurement.csv", temp);
+                string temp = $"{item.Id};{item.Value};{item.Type};{item.Time}";
+                File.AppendAllText("Measurement.csv", temp + "\n");
             }
         }
     }   
