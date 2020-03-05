@@ -36,7 +36,7 @@ namespace Server
 
             listener.Bind(localEndPoint);
             listener.Listen(100);
-            Thread.Sleep(1000);
+            //Thread.Sleep(1000);
             Console.Clear();
             Console.WriteLine("\nOnline!\n");
             Console.WriteLine("Waiting for a connection...\n");
@@ -64,12 +64,12 @@ namespace Server
   
             Socket listener = (Socket)ar.AsyncState;
             Socket client = listener.EndAccept(ar);
+            Console.WriteLine("\nClient has connected!\n");
 
             while (true)
             {
                 byte[] buff = new byte[1024];
                 int bytesReads = client.Receive(buff);
-                Console.WriteLine("\nClient has connected!\n");
 
                 if (bytesReads == 0)
                     break;
