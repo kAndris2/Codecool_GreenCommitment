@@ -36,7 +36,10 @@ namespace Server
 
             listener.Bind(localEndPoint);
             listener.Listen(100);
-            Console.WriteLine("Waiting for a connection...");
+            Thread.Sleep(1000);
+            Console.Clear();
+            Console.WriteLine("\nOnline!\n");
+            Console.WriteLine("Waiting for a connection...\n");
 
             while (true)
             {
@@ -44,7 +47,7 @@ namespace Server
 
              
                 listener.BeginAccept(new AsyncCallback(AcceptCallback), listener);
-                Console.WriteLine("\nClient has connected!\n");
+                
 
                 allDone.WaitOne();
             }
@@ -66,6 +69,7 @@ namespace Server
             {
                 byte[] buff = new byte[1024];
                 int bytesReads = client.Receive(buff);
+                Console.WriteLine("\nClient has connected!\n");
 
                 if (bytesReads == 0)
                     break;
