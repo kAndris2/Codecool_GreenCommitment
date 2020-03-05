@@ -71,10 +71,11 @@ namespace Server
                     break;
                 else if (bytesReads < buff.Length)
                 {
-                    Console.WriteLine("{0}", Encoding.ASCII.GetString(buff, 0, bytesReads));
-                    Datas.Add(ConvertToObject(Encoding.ASCII.GetString(buff, 0, bytesReads)));
+                    string message = Encoding.ASCII.GetString(buff, 0, bytesReads);
+                    Console.WriteLine(message);
+                    Datas.Add(ConvertToObject(message));
                     DataHandler.Serialize(Datas);
-                    DataHandler.SaveToCSV(Datas);
+                    DataHandler.SaveToCSV(ConvertToObject(message));
 
                 }
             }
