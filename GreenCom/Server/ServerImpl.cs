@@ -29,7 +29,11 @@ namespace Server
                 throw new Exception("No network adapters with an IPv4 address in the system!");
             }
 
+<<<<<<< HEAD
             IPAddress ipAddress = IPAddress.Parse("192.168.150.3");
+=======
+            IPAddress ipAddress = IPAddress.Parse(GetLocalIPAddress());
+>>>>>>> 65dc5d7550be5f6ff5ad83d1db9f5dfd53029be4
             IPEndPoint localEndPoint = new IPEndPoint(ipAddress, 12345);
 
             Socket listener = new Socket(ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
